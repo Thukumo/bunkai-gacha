@@ -35,9 +35,9 @@ def gen_question():
                     res += gen_string(f'{rd.choice(l)}*x', f"{rd.choice(l)}*y")
         elif tmp == 3:
             if rd.randint(0, 1) == 0:
-                res += f'(X**2{rd.choice(["+", "-"])+str(rd.randint(1, 10))}*X{rd.choice(["+", "-"])+str(rd.randint(1, 10))})'
+                res += f'(x**2{rd.choice(["+", "-"])+str(rd.randint(1, 10))}*x{rd.choice(["+", "-"])+str(rd.randint(1, 10))})'
             else:
-                res += f'({rd.choice(l)}*X**2{rd.choice(["+", "-"])+rd.choice(l)}*X{rd.choice(["+", "-"])+str(rd.randint(1, 10))})'
+                res += f'({rd.choice(l)}*x**2{rd.choice(["+", "-"])+rd.choice(l)}*x{rd.choice(["+", "-"])+str(rd.randint(1, 10))})'
         if i+1 != num: res += r"*"
         i += 1
     return res
