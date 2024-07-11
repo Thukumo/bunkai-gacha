@@ -1,5 +1,5 @@
 # 因数分解ガチャ(のパクリ)
-[因数分解ガチャ(本家)](https://hiraocafe.com/note/factorization-gacha)
+[因数分解ガチャ(本家)](https://hiraocafe.com/note/factorization-gacha.html)
 
 
 [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
