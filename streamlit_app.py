@@ -50,6 +50,7 @@ unilis = list(map(lambda x: eval(r'b"\\u'+x.replace("U+", "")+'"').decode("unico
 sympy.var('x y z')
 anslis = []
 st.title("因数分解ガチャ")
+st.subheader("下記の式を整数係数の範囲で因数分解してください。")
 for i in range(1, 6):
     a = gen_question()
     anslis.append(f"({i}) "+reshape(sympy.factor(a)))
