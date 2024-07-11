@@ -59,3 +59,5 @@ for i in range(1, 6):
 with st.expander("解答を見る"):
     for c in anslis:
         st.text(c)
+st.text("\n\n")
+st.button("もう一度回す")
