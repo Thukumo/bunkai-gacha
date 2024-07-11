@@ -8,7 +8,7 @@ def gen_string(a, b):
 def gen_question():
     res = ""
     l = [str(j) for j in range(2, 6)]
-    num = rd.randint(3, 7)
+    num = rd.randint(3, 6)
     res += rd.choice([""]*70+["-"]*30)
     i = 0
     while i < num:
