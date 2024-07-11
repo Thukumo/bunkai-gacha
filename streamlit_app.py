@@ -38,7 +38,7 @@ def gen_question():
                 res += f'(x**2{rd.choice(["+", "-"])+str(rd.randint(1, 10))}*x{rd.choice(["+", "-"])+str(rd.randint(1, 10))})'
             else:
                 res += f'({rd.choice(l)}*x**2{rd.choice(["+", "-"])+rd.choice(l)}*x{rd.choice(["+", "-"])+str(rd.randint(1, 10))})'
-            i+=1
+            #i+=1
         if i+1 != num: res += r"*"
         i += 1
     return res
