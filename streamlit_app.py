@@ -46,11 +46,16 @@ def gen_question():
 
 def reshape(s):
     res = str(s).replace(" ", "")
-    for j in range(2, 10):
-        res = res.replace(r"**"+str(j), unilis[j-2])
+    #for j in range(2, 10):
+    for j in range(20, 1, -1):
+        l = []
+        for k in range(len(str(j))):
+            l.append(unilis[int(str(j)[k])])
+        l = "".join(l)
+        res = res.replace(r"**"+str(j), l)
     return res.replace(r"*", "")
 
-unilis = list(map(lambda x: eval(r'b"\\u'+x.replace("U+", "")+'"').decode("unicode-escape"), ["U+00B2", "U+00B3", "U+2074", "U+2075", "U+2076", "U+2077", "U+2078", "U+2079"]))
+unilis = list(map(lambda x: eval(r'b"\\u'+x.replace("U+", "")+'"').decode("unicode-escape"), ["U+2070", "U+00B9", "U+00B2", "U+00B3", "U+2074", "U+2075", "U+2076", "U+2077", "U+2078", "U+2079"]))
 sympy.var('x y z')
 anslis = []
 st.title("因数分解ガチャ(パクリ)")
