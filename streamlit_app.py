@@ -8,21 +8,22 @@ def gen_string(a, b):
 def gen_question():
     res = ""
     l = [str(j) for j in range(2, 6)]
-    num = rd.randint(3, 6)
+    num = rd.randint(3, max_n)
     res += rd.choice([""]*70+["-"]*30)
     i = 0
     while i < num:
-        if (tmp := rd.randint(0, 2 if i-num == 1 else 3)) == 0:
+        #0. xとn 1. yとn 2. xとy 3. x^2とxとn
+        if (tmp := rd.randint(0, 0 if not (include_y or include_x2) else 1 if not include_y else 2 if i-num == 1 or not include_x2 else 3)) == 0:
             if rd.randint(0, 1) == 0:
                 res += gen_string("x", rd.randint(1, 10))
             else:
                 res += gen_string(f'{rd.choice(l)}*x', rd.randint(1, 10))
-        elif tmp == 1:
+        elif tmp == 1 and include_y:
             if rd.randint(0, 1) == 0:
                 res += gen_string("y", rd.randint(1, 10))
             else:
                 res += gen_string(f'{rd.choice(l)}*y', rd.randint(1, 10))
-        elif tmp == 2:
+        elif tmp == 2 and include_y:
             if rd.randint(0, 1) == 0:
                 if rd.randint(0, 1) == 0:
                     res += gen_string("x", "y")
@@ -33,7 +34,7 @@ def gen_question():
                     res += gen_string(f'{rd.choice(l)}*x', "y")
                 else:
                     res += gen_string(f'{rd.choice(l)}*x', f"{rd.choice(l)}*y")
-        elif tmp == 3:
+        elif tmp == 3 or (tmp == 1 and include_x2 and not include_y):
             if rd.randint(0, 1) == 0:
                 res += f'(x**2{rd.choice(["+", "-"])+str(rd.randint(1, 10))}*x{rd.choice(["+", "-"])+str(rd.randint(1, 10))})'
             else:
@@ -54,6 +55,14 @@ sympy.var('x y z')
 anslis = []
 st.title("因数分解ガチャ(パクリ)")
 st.subheader("下記の式を整数係数の範囲で因数分解してください。")
+if hell := st.checkbox("✟ヘルモード✟"):
+    include_x2 = True
+    include_y = True
+    max_n = rd.randint(7, 9)
+else:
+    if include_y := st.checkbox("yを含む式を出題する"): pass
+    if include_x2 := st.checkbox("分解後にx^2を含む式を出題する"): pass
+    if max_n := st.selectbox("項数の最大値", range(3, 8)): pass
 for i in range(1, 6):
     a = gen_question()
     anslis.append(f"({i}) "+reshape(sympy.factor(a)))
