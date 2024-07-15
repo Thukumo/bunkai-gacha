@@ -12,7 +12,7 @@ def gen_question():
     res += rd.choice([""]*70+["-"]*30)
     i = 0
     while i < num:
-        if (tmp := rd.randint(0, 3)) == 0:
+        if (tmp := rd.randint(0, 2 if i-num == 1 else 3)) == 0:
             if rd.randint(0, 1) == 0:
                 res += gen_string("x", rd.randint(1, 10))
             else:
