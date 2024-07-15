@@ -41,12 +41,14 @@ def gen_question():
             num-=1
         if i+1 != num: res += r"*"
         i += 1
-    return res
+    return res[:-1] if res.endswith("*") else res #なんかおかしいから対策
+
 def reshape(s):
     res = str(s).replace(" ", "")
     for j in range(2, 10):
         res = res.replace(r"**"+str(j), unilis[j-2])
     return res.replace(r"*", "")
+
 unilis = list(map(lambda x: eval(r'b"\\u'+x.replace("U+", "")+'"').decode("unicode-escape"), ["U+00B2", "U+00B3", "U+2074", "U+2075", "U+2076", "U+2077", "U+2078", "U+2079"]))
 sympy.var('x y z')
 anslis = []
@@ -55,8 +57,7 @@ st.subheader("下記の式を整数係数の範囲で因数分解してくださ
 for i in range(1, 6):
     a = gen_question()
     anslis.append(f"({i}) "+reshape(sympy.factor(a)))
-    q = reshape(sympy.expand(a))
-    st.text(f"({i}) {q}")
+    st.text(f"({i}) {reshape(sympy.expand(a))}")
 with st.expander("解答を見る"):
     for c in anslis:
         st.text(c)
