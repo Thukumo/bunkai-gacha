@@ -2,7 +2,7 @@
 [因数分解ガチャ(本家)](https://hiraocafe.com/note/factorization-gacha.html)
 
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://bunkai-gacha.streamlit.app/)
 
 ### How to run it on your own machine
 
