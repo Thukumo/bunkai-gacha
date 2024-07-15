@@ -8,7 +8,7 @@ def gen_string(a, b):
 def gen_question():
     res = ""
     l = [str(j) for j in range(2, 6)]
-    num = rd.randint(3, max_n)
+    num = rd.randint(7 if hell else 3, rd.randint(7, 12) if hell else max_n)
     res += rd.choice([""]*70+["-"]*30)
     i = 0
     while i < num:
@@ -55,12 +55,12 @@ sympy.var('x y z')
 anslis = []
 st.title("因数分解ガチャ(パクリ)")
 st.subheader("下記の式を整数係数の範囲で因数分解してください。")
+if include_y := st.checkbox("yを含む式を出題する"): pass
 if hell := st.checkbox("✟ヘルモード✟"):
     include_x2 = True
-    include_y = True
-    max_n = rd.randint(7, 9)
+    max_n = 0
 else:
-    if include_y := st.checkbox("yを含む式を出題する"): pass
+    #if include_y := st.checkbox("yを含む式を出題する"): pass
     if include_x2 := st.checkbox("分解後にx^2を含む式を出題する"): pass
     if max_n := st.selectbox("項数の最大値", range(3, 8)): pass
 for i in range(1, 6):
